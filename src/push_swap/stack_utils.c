@@ -6,7 +6,7 @@
 /*   By: mgering <mgering@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:28:47 by mgering           #+#    #+#             */
-/*   Updated: 2024/05/03 19:49:41 by mgering          ###   ########.fr       */
+/*   Updated: 2024/05/16 18:12:45 by mgering          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ t_stack	*find_last(t_stack *node)
 	return (node);
 }
 
-t_stack	*find_first(t_stack **node)
+t_stack	*find_first(t_stack *node)
 {
-	refresh_current_pos(*node);
-	if (!(*node))
+	refresh_current_pos(node);
+	if (!(node))
 		return (NULL);
-	while ((*node)->prev != NULL)
+	while ((node)->prev != NULL)
 	{
-		*node = (*node)->prev;
+		node = (node)->prev;
 	}
-	return (*node);
+	return (node);
 }
 
-t_stack	*find_max_node(t_stack *node)
+t_stack	*max(t_stack *node)
 {
 	t_stack	*max_node;
 	int		max_value;
@@ -56,7 +56,7 @@ t_stack	*find_max_node(t_stack *node)
 	return (max_node);
 }
 
-t_stack	*find_min_node(t_stack *node)
+t_stack	*min(t_stack *node)
 {
 	t_stack	*min_node;
 	int		min_value;

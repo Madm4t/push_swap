@@ -6,7 +6,7 @@
 /*   By: mgering <mgering@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:40:32 by mgering           #+#    #+#             */
-/*   Updated: 2024/05/08 16:34:34 by mgering          ###   ########.fr       */
+/*   Updated: 2024/05/16 18:12:25 by mgering          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,38 @@ typedef struct stack_list
 	struct stack_list	*prev;
 }	t_stack;
 
-//initialize
+//push_swap
 int		main(int argc, char **argv);
-void	init_stack_a(t_stack **a, char **argv);
+
+//big_sort + utils
+int		find_place_b(t_stack *a, t_stack *b);
+bool	where(t_stack *b);
+void	start_sort_b(t_stack **a, t_stack **b);
+
+//init_stack
 bool	init_pos_split(t_stack **node);
-int		set_smallest_third(t_stack *node);
-int		how_many_smallest_third(t_stack *node);
-int		mid_node(t_stack *b);
-bool 	where(t_stack *a, t_stack *b);
+void	init_stack_a(t_stack **a, char **argv);
+
+//is_sorted
+bool	is_sorted(t_stack *a);
+bool	pseudo_sorted(t_stack *node);
+
+//smallest_num
+void	set_smallest(t_stack *node);
+int		how_many_smallest(t_stack *node);
+t_stack	*upper_3rd(t_stack *a);
 
 //sort
-void	test_sort(t_stack **a);
 void	small_sort(t_stack **a);
-void	sort_pseudo(t_stack **a);
-bool	a_sorted(t_stack *a);
-bool	pseudo_sorted(t_stack *node);
-void	start_sort_b(t_stack **a, t_stack **b);
+void	test_sort(t_stack **a);
 void	push_back(t_stack **a, t_stack **b);
-bool	from_above(t_stack	*b);
+void	sort_pseudo_a(t_stack **a);
 
 //stack_utils
 t_stack	*find_last(t_stack *node);
-t_stack	*find_first(t_stack **node);
-t_stack	*find_max_node(t_stack *node);
-t_stack	*find_min_node(t_stack *node);
+t_stack	*find_first(t_stack *node);
+t_stack	*max(t_stack *node);
+t_stack	*min(t_stack *node);
 int		refresh_current_pos(t_stack *node);
 
 //errors

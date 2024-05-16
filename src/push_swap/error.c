@@ -6,7 +6,7 @@
 /*   By: mgering <mgering@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:56:41 by mgering           #+#    #+#             */
-/*   Updated: 2024/05/02 17:55:59 by mgering          ###   ########.fr       */
+/*   Updated: 2024/05/12 22:47:49 by mgering          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_stack(t_stack **stack)
 	t_stack	*tmp;
 	t_stack	*current;
 
-	*stack = find_first(stack);
+	*stack = find_first(*stack);
 	if (!stack)
 		return ;
 	current = *stack;
@@ -52,7 +52,7 @@ int	error_duplicate(t_stack *stack, int nbr)
 	{
 		if ((stack)->value == nbr)
 		{
-			write(2, "ERROR: dublicate\n", 17);
+			write(2, "Error\n", 6);
 			return (1);
 		}
 		stack = stack->next;

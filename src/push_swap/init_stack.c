@@ -6,7 +6,7 @@
 /*   By: mgering <mgering@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:37:51 by mgering           #+#    #+#             */
-/*   Updated: 2024/05/03 17:21:15 by mgering          ###   ########.fr       */
+/*   Updated: 2024/05/12 23:58:50 by mgering          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	init_stack_a(t_stack **a, char **argv)
 	{
 		if (error_syntax(argv[i]))
 		{
-			write(2, "ERROR: number syntax\n", 21);
+			write(2, "Error\n", 6);
 			error_occured(a);
 		}
 		num = ft_atol(argv[i]);
 		if (INT_MIN > num || INT_MAX < num)
 		{
-			write(2, "ERROR: INT_range\n", 17);
+			write(2, "Error\n", 6);
 			error_occured(a);
 		}
 		if (error_duplicate(*a, (int)num))
@@ -90,7 +90,7 @@ void	init_stack_a(t_stack **a, char **argv)
 		i++;
 		build_stack_a(a, (int)num, &i);
 	}
-	*a = find_first(a);
+	*a = find_first(*a);
 }
 
 bool	init_pos_split(t_stack **node)
@@ -100,7 +100,7 @@ bool	init_pos_split(t_stack **node)
 
 	total_nodes = 0;
 	split_pos = 0;
-	*node = find_first(node);
+	*node = find_first(*node);
 	while ((*node)->next)
 	{
 		(*node)->current_position = ++total_nodes;
@@ -108,60 +108,9 @@ bool	init_pos_split(t_stack **node)
 			split_pos = (*node)->current_position;
 		*node = (*node)->next;
 	}
-	*node = find_first(node);
+	*node = find_first(*node);
 	if (split_pos > (total_nodes / 2))
 		return (true);
 	else
 		return (false);
-}
-
-int	set_smallest_third(t_stack *node)
-{
-	t_stack	*smallest_num;
-	int		total_nodes;
-	int		under_num;
-	int		temp;
-
-	total_nodes = find_last(node)->current_position;
-	under_num = total_nodes / 3;
-	under_num -= how_many_smallest_third(node);
-	while (under_num > 0)
-	{
-		find_first(&node);
-		smallest_num = NULL;
-		temp = INT_MAX;
-		while (node)
-		{
-			if (!(node->smallest3rd) && node->value < temp)
-			{
-				temp = node->value;
-				smallest_num = node;
-			}
-			if (node->next)
-				node = node->next;
-			else
-				break ;
-		}
-		if (smallest_num)
-			smallest_num->smallest3rd = true;
-		under_num--;
-	}
-	return (total_nodes);
-}
-
-int	how_many_smallest_third(t_stack *node)
-{
-	int	i;
-
-	i = 0;
-	while (node)
-	{
-		if (node->smallest3rd)
-			i++;
-		if (node->next)
-			node = node->next;
-		else
-			break;
-	}
-	return (i);
 }

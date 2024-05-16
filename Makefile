@@ -10,12 +10,15 @@ SRC	=	$(SRC_COMMANDS)push.c \
 		$(SRC_COMMANDS)reverse_rotate.c \
 		$(SRC_COMMANDS)rotate.c \
 		$(SRC_COMMANDS)swap.c \
-		$(SRC_PUSH_SWAP)init_stack.c \
-		$(SRC_PUSH_SWAP)push_swap.c \
-		$(SRC_PUSH_SWAP)stack_utils.c \
-		$(SRC_PUSH_SWAP)is_sorted.c \
+		$(SRC_PUSH_SWAP)big_sort_utils.c \
+		$(SRC_PUSH_SWAP)big_sort.c \
 		$(SRC_PUSH_SWAP)error.c \
-		$(SRC_PUSH_SWAP)small_sort.c
+		$(SRC_PUSH_SWAP)init_stack.c \
+		$(SRC_PUSH_SWAP)is_sorted.c \
+		$(SRC_PUSH_SWAP)push_swap.c \
+		$(SRC_PUSH_SWAP)small_sort.c \
+		$(SRC_PUSH_SWAP)smallest_num.c \
+		$(SRC_PUSH_SWAP)stack_utils.c
 
 OBJ	= $(SRC:.c=.o)
 
